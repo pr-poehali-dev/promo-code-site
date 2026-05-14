@@ -385,20 +385,67 @@ export default function Index() {
             </div>
           </section>
 
-          {/* Promos Grid */}
+          {/* Promos Grid + Sidebar */}
           <section className="max-w-5xl mx-auto px-4 pb-16">
-            {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filtered.map((promo) => (
-                  <PromoCard key={promo.id} promo={promo} />
-                ))}
+            <div className="flex gap-6 items-start">
+              {/* Main grid */}
+              <div className="flex-1 min-w-0">
+                {filtered.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {filtered.map((promo, i) => (
+                      <>
+                        <PromoCard key={promo.id} promo={promo} />
+                        {i === 1 && (
+                          <div key="ad-inline" className="md:col-span-2 rounded-2xl border-2 border-dashed border-border bg-white flex items-center justify-center py-6 px-6 gap-4 group cursor-pointer hover:border-primary transition-colors">
+                            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+                              <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                            <div>
+                              <div className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Рекламное место</div>
+                              <div className="font-semibold text-foreground text-sm">Ваш баннер здесь · 728×90</div>
+                              <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами для размещения рекламы</div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-16 text-muted-foreground">
+                    <div className="text-5xl mb-4">🔍</div>
+                    <p className="font-medium">В этой категории пока нет промокодов</p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="text-center py-16 text-muted-foreground">
-                <div className="text-5xl mb-4">🔍</div>
-                <p className="font-medium">В этой категории пока нет промокодов</p>
-              </div>
-            )}
+
+              {/* Sidebar */}
+              <aside className="hidden lg:flex flex-col gap-4 w-64 shrink-0 sticky top-24">
+                <div className="rounded-2xl border-2 border-dashed border-border bg-white p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
+                  <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
+                    <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Реклама</div>
+                    <div className="font-semibold text-foreground text-sm mb-1">Ваш баннер</div>
+                    <div className="text-xs text-muted-foreground">240×400 · Свяжитесь с нами</div>
+                  </div>
+                  <div className="w-full h-32 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
+                    240 × 400
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border-2 border-dashed border-border bg-white p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
+                  <div className="w-full h-20 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
+                    240 × 200
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Реклама</div>
+                    <div className="font-semibold text-foreground text-sm mb-1">Ваш баннер</div>
+                    <div className="text-xs text-muted-foreground">240×200 · Свяжитесь с нами</div>
+                  </div>
+                </div>
+              </aside>
+            </div>
           </section>
         </>
       )}
@@ -481,6 +528,20 @@ export default function Index() {
           </div>
         </section>
       )}
+
+      {/* Bottom Banner Ad */}
+      <div className="max-w-5xl mx-auto px-4 pb-8">
+        <div className="rounded-2xl border-2 border-dashed border-border bg-white flex items-center justify-center py-7 px-6 gap-4 cursor-pointer hover:border-primary transition-colors group">
+          <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+            <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+          </div>
+          <div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Рекламное место</div>
+            <div className="font-semibold text-foreground text-sm">Ваш баннер здесь · 970×90</div>
+            <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами для размещения рекламы</div>
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-border bg-white">
