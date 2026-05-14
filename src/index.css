@@ -4,51 +4,44 @@
 
 @layer base {
   :root {
-    --background: 30 20% 97%;
-    --foreground: 20 14% 10%;
+    --background: 222 26% 10%;
+    --foreground: 210 30% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 14% 10%;
+    --card: 222 24% 13%;
+    --card-foreground: 210 30% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 10%;
+    --popover: 222 24% 13%;
+    --popover-foreground: 210 30% 92%;
 
-    --primary: 16 85% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 165 80% 44%;
+    --primary-foreground: 222 26% 8%;
 
-    --secondary: 30 15% 93%;
-    --secondary-foreground: 20 14% 20%;
+    --secondary: 222 22% 18%;
+    --secondary-foreground: 210 25% 75%;
 
-    --muted: 30 15% 93%;
-    --muted-foreground: 20 10% 50%;
+    --muted: 222 22% 18%;
+    --muted-foreground: 215 18% 52%;
 
-    --accent: 16 85% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 165 80% 44%;
+    --accent-foreground: 222 26% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 30% 92%;
 
-    --border: 30 12% 88%;
-    --input: 30 12% 88%;
-    --ring: 16 85% 50%;
+    --border: 222 20% 20%;
+    --input: 222 20% 20%;
+    --ring: 165 80% 44%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 222 26% 8%;
+    --sidebar-foreground: 210 30% 92%;
+    --sidebar-primary: 165 80% 44%;
+    --sidebar-primary-foreground: 222 26% 8%;
+    --sidebar-accent: 222 22% 18%;
+    --sidebar-accent-foreground: 210 30% 92%;
+    --sidebar-border: 222 20% 20%;
+    --sidebar-ring: 165 80% 44%;
   }
 
   .dark {
@@ -121,7 +114,7 @@
   }
   .card-hover:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   }
 
   .promo-code {

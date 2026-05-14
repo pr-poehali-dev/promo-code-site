@@ -174,7 +174,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-border card-hover animate-fade-in overflow-hidden">
+    <div className="bg-card rounded-2xl border border-border card-hover animate-fade-in overflow-hidden">
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             onClick={copyCode}
             className={`shrink-0 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
               copied
-                ? "bg-green-100 text-green-700"
+                ? "bg-primary/20 text-primary"
                     : "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
             }`}
           >
@@ -226,7 +226,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             <span className="text-sm font-semibold text-foreground">{currentRating}</span>
             <span className="text-xs text-muted-foreground">({ratingCount})</span>
             {userRating > 0 && (
-              <span className="text-xs text-green-600 font-medium">Оценили!</span>
+              <span className="text-xs text-primary font-medium">Оценили!</span>
             )}
           </div>
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -315,7 +315,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
+      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
@@ -353,7 +353,7 @@ export default function Index() {
           {/* Hero */}
           <section className="max-w-5xl mx-auto px-4 pt-12 pb-8">
             <div className="text-center mb-10 animate-fade-in">
-              <div className="inline-flex items-center gap-2 bg-orange-50 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 bg-secondary text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4">
                 <Icon name="Zap" size={14} />
                 {PROMOS.length} актуальных промокодов
               </div>
@@ -396,7 +396,7 @@ export default function Index() {
                       <>
                         <PromoCard key={promo.id} promo={promo} />
                         {i === 1 && (
-                          <div key="ad-inline" className="md:col-span-2 rounded-2xl border-2 border-dashed border-border bg-white flex items-center justify-center py-6 px-6 gap-4 group cursor-pointer hover:border-primary transition-colors">
+                          <div key="ad-inline" className="md:col-span-2 rounded-2xl border-2 border-dashed border-border bg-card flex items-center justify-center py-6 px-6 gap-4 group cursor-pointer hover:border-primary transition-colors">
                             <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
                               <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
                             </div>
@@ -420,7 +420,7 @@ export default function Index() {
 
               {/* Sidebar */}
               <aside className="hidden lg:flex flex-col gap-4 w-64 shrink-0 sticky top-24">
-                <div className="rounded-2xl border-2 border-dashed border-border bg-white p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
+                <div className="rounded-2xl border-2 border-dashed border-border bg-card p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
                     <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
@@ -434,7 +434,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border-2 border-dashed border-border bg-white p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
+                <div className="rounded-2xl border-2 border-dashed border-border bg-card p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
                   <div className="w-full h-20 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
                     240 × 200
                   </div>
@@ -458,13 +458,13 @@ export default function Index() {
           </div>
 
           {contactSent ? (
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-scale-in">
+            <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center animate-scale-in">
               <div className="text-5xl mb-4">✅</div>
               <h3 className="font-bold text-lg text-foreground mb-2">Сообщение отправлено!</h3>
               <p className="text-muted-foreground text-sm">Мы ответим вам в течение 24 часов.</p>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-border p-6 space-y-4">
+            <div className="bg-card rounded-2xl border border-border p-6 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">Ваше имя</label>
@@ -507,8 +507,8 @@ export default function Index() {
           )}
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-white rounded-2xl border border-border p-5 flex items-center gap-4">
-              <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
+            <div className="bg-card rounded-2xl border border-border p-5 flex items-center gap-4">
+              <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center shrink-0">
                 <Icon name="Mail" size={20} className="text-primary" />
               </div>
               <div>
@@ -516,8 +516,8 @@ export default function Index() {
                 <div className="text-sm font-medium text-foreground">hello@promohub.ru</div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl border border-border p-5 flex items-center gap-4">
-              <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center shrink-0">
+            <div className="bg-card rounded-2xl border border-border p-5 flex items-center gap-4">
+              <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center shrink-0">
                 <Icon name="MessageCircle" size={20} className="text-primary" />
               </div>
               <div>
@@ -532,7 +532,7 @@ export default function Index() {
       {/* SEO Text Block */}
       {activeSection === "promos" && (
         <section className="max-w-5xl mx-auto px-4 pb-10">
-          <div className="bg-white rounded-2xl border border-border p-6">
+          <div className="bg-card rounded-2xl border border-border p-6">
             <h2 className="text-base font-bold text-foreground mb-2">Промокоды и скидки 2026 — PromoLand</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               PromoLand — это сервис проверенных промокодов и купонов на скидки в популярных российских магазинах.
@@ -551,7 +551,7 @@ export default function Index() {
 
       {/* Bottom Banner Ad */}
       <div className="max-w-5xl mx-auto px-4 pb-8">
-        <div className="rounded-2xl border-2 border-dashed border-border bg-white flex items-center justify-center py-7 px-6 gap-4 cursor-pointer hover:border-primary transition-colors group">
+        <div className="rounded-2xl border-2 border-dashed border-border bg-card flex items-center justify-center py-7 px-6 gap-4 cursor-pointer hover:border-primary transition-colors group">
           <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
             <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
           </div>
@@ -564,7 +564,7 @@ export default function Index() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-white">
+      <footer className="border-t border-border bg-card">
         <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
