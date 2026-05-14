@@ -2,111 +2,116 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const CATEGORIES = [
-  { id: "all", label: "Все", icon: "LayoutGrid" },
-  { id: "food", label: "Еда и доставка", icon: "UtensilsCrossed" },
-  { id: "fashion", label: "Одежда", icon: "ShoppingBag" },
-  { id: "tech", label: "Электроника", icon: "Smartphone" },
-  { id: "travel", label: "Путешествия", icon: "Plane" },
-  { id: "beauty", label: "Красота", icon: "Sparkles" },
-  { id: "sport", label: "Спорт", icon: "Dumbbell" },
+  { id: "all", label: "Все сайты", icon: "LayoutGrid" },
+  { id: "top", label: "Топ сайты", icon: "Crown" },
+  { id: "free", label: "Бесплатные кейсы", icon: "Gift" },
+  { id: "bonus", label: "Бонус при регистрации", icon: "Zap" },
+  { id: "cashback", label: "Кэшбэк", icon: "RefreshCw" },
+  { id: "new", label: "Новые сайты", icon: "Sparkles" },
 ];
 
 const PROMOS = [
   {
     id: 1,
-    category: "food",
-    brand: "Яндекс Еда",
-    logo: "🍕",
-    title: "Скидка 30% на первый заказ",
-    code: "YAEДА30",
-    discount: "30%",
+    category: "top",
+    brand: "DatDrop",
+    logo: "🎯",
+    title: "+5% к балансу при пополнении",
+    code: "DATDROP5",
+    discount: "+5%",
     expires: "31 мая 2026",
-    rating: 4.7,
-    ratingCount: 248,
-    description: "Скидка действует на первый заказ от 500 ₽ для новых пользователей.",
+    rating: 4.8,
+    ratingCount: 1243,
+    description: "Один из крупнейших сайтов открытия кейсов. Промокод даёт +5% к любому пополнению. Работает для новых и старых игроков.",
+    badge: "🔥 Горячий",
     comments: [
-      { id: 1, author: "Марина К.", text: "Сработал! Заказала пиццу с хорошей скидкой 🎉", date: "12 мая", rating: 5 },
-      { id: 2, author: "Алексей Т.", text: "Применил вчера, всё отлично работает", date: "10 мая", rating: 5 },
+      { id: 1, author: "k1to_fan", text: "Реально работает, закинул 500р получил 525. Топ сайт!", date: "13 мая", rating: 5 },
+      { id: 2, author: "csgo_player88", text: "Использую уже 3 месяца, код рабочий", date: "11 мая", rating: 5 },
     ],
   },
   {
     id: 2,
-    category: "tech",
-    brand: "DNS",
-    logo: "💻",
-    title: "−5 000 ₽ на ноутбуки",
-    code: "DNS5000",
-    discount: "5 000 ₽",
-    expires: "20 мая 2026",
-    rating: 4.2,
-    ratingCount: 134,
-    description: "Скидка на все ноутбуки стоимостью от 40 000 ₽. Применяется при оплате онлайн.",
+    category: "free",
+    brand: "Key-Drop",
+    logo: "🗝️",
+    title: "Бесплатный кейс при регистрации",
+    code: "KEYDROP_FREE",
+    discount: "Free Case",
+    expires: "1 июня 2026",
+    rating: 4.6,
+    ratingCount: 892,
+    description: "Введи промокод после регистрации и получи бесплатный кейс. Шанс выпадения скинов до 1000$.",
+    badge: "🎁 Фрибет",
     comments: [
-      { id: 1, author: "Дмитрий В.", text: "Взял Lenovo, скидка применилась без проблем", date: "11 мая", rating: 4 },
+      { id: 1, author: "niko_cs2", text: "Получил кейс, выпала AWP Азимов — продал за 1200р!", date: "12 мая", rating: 5 },
     ],
   },
   {
     id: 3,
-    category: "fashion",
-    brand: "Wildberries",
-    logo: "👗",
-    title: "Скидка 20% на всё",
-    code: "WB20MAY",
-    discount: "20%",
-    expires: "25 мая 2026",
-    rating: 3.9,
-    ratingCount: 512,
-    description: "Скидка 20% на весь ассортимент без ограничений по сумме заказа.",
+    category: "bonus",
+    brand: "Farmskins",
+    logo: "🌿",
+    title: "+10% к первому пополнению",
+    code: "FARM10",
+    discount: "+10%",
+    expires: "15 июня 2026",
+    rating: 4.4,
+    ratingCount: 567,
+    description: "Сайт с огромным выбором кейсов. Промокод FARM10 даёт +10% к первому депозиту. Минимальный депозит — 50 рублей.",
+    badge: null,
     comments: [
-      { id: 1, author: "Ольга М.", text: "Не получилось применить на бренд H&M", date: "13 мая", rating: 3 },
-      { id: 2, author: "Светлана Р.", text: "На обычные товары работает отлично!", date: "12 мая", rating: 5 },
+      { id: 1, author: "pro_trader_cs", text: "Сайт честный, вывод работает быстро", date: "10 мая", rating: 4 },
+      { id: 2, author: "skins4life", text: "Код применился, бонус пришёл сразу", date: "9 мая", rating: 5 },
     ],
   },
   {
     id: 4,
-    category: "travel",
-    brand: "Aviasales",
-    logo: "✈️",
-    title: "Кэшбэк 1 500 ₽ на авиабилеты",
-    code: "FLY1500",
-    discount: "1 500 ₽",
-    expires: "15 июня 2026",
-    rating: 4.5,
-    ratingCount: 89,
-    description: "Кэшбэк зачисляется в течение 5 дней после покупки билета от 5 000 ₽.",
-    comments: [],
+    category: "top",
+    brand: "Hellcase",
+    logo: "💀",
+    title: "3 бесплатных кейса + бонус",
+    code: "HELLCASE3",
+    discount: "3 кейса",
+    expires: "20 мая 2026",
+    rating: 4.7,
+    ratingCount: 2104,
+    description: "Hellcase — один из самых популярных сайтов с кейсами КС2. По промокоду — 3 бесплатных кейса и бонус на баланс.",
+    badge: "⭐ Популярный",
+    comments: [
+      { id: 1, author: "m4a4_enjoyer", text: "Hellcase лучший! Выбил AK Вулкан с бесплатного кейса", date: "13 мая", rating: 5 },
+    ],
   },
   {
     id: 5,
-    category: "beauty",
-    brand: "Л'Этуаль",
-    logo: "💄",
-    title: "−15% на парфюмерию",
-    code: "LETUAL15",
-    discount: "15%",
-    expires: "30 мая 2026",
-    rating: 4.8,
-    ratingCount: 203,
-    description: "Скидка распространяется на всю парфюмерию, включая новинки сезона.",
+    category: "cashback",
+    brand: "SkinsMonkey",
+    logo: "🐵",
+    title: "5% кэшбэк на все открытия",
+    code: "MONKEY5CB",
+    discount: "5% кэшбэк",
+    expires: "30 июня 2026",
+    rating: 4.3,
+    ratingCount: 334,
+    description: "SkinsMonkey начисляет 5% кэшбэк от суммы открытых кейсов. Кэшбэк автоматически зачисляется на баланс.",
+    badge: null,
     comments: [
-      { id: 1, author: "Анна Б.", text: "Взяла Chanel No. 5 со скидкой! Спасибо!", date: "13 мая", rating: 5 },
+      { id: 1, author: "caseopener2026", text: "Кэшбэк реально приходит, уже вывел несколько раз", date: "8 мая", rating: 4 },
     ],
   },
   {
     id: 6,
-    category: "sport",
-    brand: "Спортмастер",
-    logo: "🏋️",
-    title: "Скидка 25% на кроссовки",
-    code: "SPORT25",
-    discount: "25%",
-    expires: "5 июня 2026",
-    rating: 4.3,
-    ratingCount: 176,
-    description: "Скидка на весь ассортимент кроссовок и спортивной обуви.",
-    comments: [
-      { id: 1, author: "Игорь Н.", text: "Nike купил с хорошей скидкой. Код работает!", date: "9 мая", rating: 5 },
-    ],
+    category: "new",
+    brand: "CaseBattle",
+    logo: "⚔️",
+    title: "+15% к балансу + участие в батле",
+    code: "BATTLE15",
+    discount: "+15%",
+    expires: "10 июня 2026",
+    rating: 4.5,
+    ratingCount: 211,
+    description: "Новый сайт с режимом батлов. Промокод даёт +15% к пополнению и доступ к эксклюзивным батлам с призовым фондом.",
+    badge: "🆕 Новинка",
+    comments: [],
   },
 ];
 
@@ -118,7 +123,7 @@ function StarRating({ value, onRate }: { value: number; onRate?: (v: number) => 
         <button
           key={star}
           className={`transition-all text-lg leading-none ${
-            star <= (hovered || value) ? "text-orange-400" : "text-gray-200"
+            star <= (hovered || value) ? "text-primary" : "text-muted"
           } ${onRate ? "cursor-pointer hover:scale-110" : "cursor-default"}`}
           onMouseEnter={() => onRate && setHovered(star)}
           onMouseLeave={() => onRate && setHovered(0)}
@@ -152,14 +157,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
 
   const submitComment = () => {
     if (!newComment.trim()) return;
-    const comment = {
-      id: Date.now(),
-      author: "Вы",
-      text: newComment,
-      date: "сейчас",
-      rating: newRating || 5,
-    };
-    setComments([comment, ...comments]);
+    setComments([{ id: Date.now(), author: "Ты", text: newComment, date: "сейчас", rating: newRating || 5 }, ...comments]);
     setNewComment("");
     setNewRating(0);
   };
@@ -182,14 +180,15 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
               {promo.logo}
             </div>
             <div>
-              <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-0.5">
-                {promo.brand}
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{promo.brand}</span>
+                {promo.badge && <span className="text-xs font-medium text-primary">{promo.badge}</span>}
               </div>
               <h3 className="font-semibold text-foreground leading-tight">{promo.title}</h3>
             </div>
           </div>
-          <span className="shrink-0 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
-            −{promo.discount}
+          <span className="shrink-0 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap">
+            {promo.discount}
           </span>
         </div>
 
@@ -204,7 +203,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             {!codeRevealed && (
               <div className="absolute inset-0 flex items-center justify-center gap-2 text-primary font-semibold text-sm">
                 <Icon name="Eye" size={15} />
-                Показать код
+                Показать промокод
               </div>
             )}
           </div>
@@ -213,10 +212,10 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             className={`shrink-0 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
               copied
                 ? "bg-primary/20 text-primary"
-                    : "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
+                : "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
             }`}
           >
-            {copied ? "Скопировано!" : "Скопировать"}
+            {copied ? "Скопировано!" : "Копировать"}
           </button>
         </div>
 
@@ -225,9 +224,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             <StarRating value={Math.round(currentRating)} onRate={!userRating ? ratePromo : undefined} />
             <span className="text-sm font-semibold text-foreground">{currentRating}</span>
             <span className="text-xs text-muted-foreground">({ratingCount})</span>
-            {userRating > 0 && (
-              <span className="text-xs text-primary font-medium">Оценили!</span>
-            )}
+            {userRating > 0 && <span className="text-xs text-primary font-medium">Спасибо!</span>}
           </div>
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Icon name="Calendar" size={13} />
@@ -243,7 +240,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
         >
           <span className="flex items-center gap-2">
             <Icon name="MessageCircle" size={15} />
-            {comments.length > 0 ? `${comments.length} комментари${comments.length === 1 ? "й" : "я"}` : "Оставить комментарий"}
+            {comments.length > 0 ? `${comments.length} отзыв${comments.length === 1 ? "" : "а"}` : "Оставить отзыв"}
           </span>
           <Icon name={expanded ? "ChevronUp" : "ChevronDown"} size={15} />
         </button>
@@ -251,17 +248,16 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
         {expanded && (
           <div className="px-5 pb-5 animate-fade-in">
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{promo.description}</p>
-
             <div className="mb-4">
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Поделитесь опытом использования..."
+                placeholder="Сработал ли промокод? Поделись опытом..."
                 className="w-full text-sm bg-secondary rounded-xl p-3 resize-none border border-transparent focus:border-primary focus:outline-none transition-colors min-h-[80px] placeholder:text-muted-foreground"
               />
               <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">Ваша оценка:</span>
+                  <span className="text-xs text-muted-foreground">Оценка:</span>
                   <StarRating value={newRating} onRate={setNewRating} />
                 </div>
                 <button
@@ -273,7 +269,6 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
                 </button>
               </div>
             </div>
-
             {comments.length > 0 && (
               <div className="space-y-3">
                 {comments.map((c) => (
@@ -303,9 +298,7 @@ export default function Index() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const [contactSent, setContactSent] = useState(false);
 
-  const filtered = activeCategory === "all"
-    ? PROMOS
-    : PROMOS.filter((p) => p.category === activeCategory);
+  const filtered = activeCategory === "all" ? PROMOS : PROMOS.filter((p) => p.category === activeCategory);
 
   const submitContact = () => {
     if (!contactForm.name || !contactForm.email || !contactForm.message) return;
@@ -319,9 +312,12 @@ export default function Index() {
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-              <Icon name="Ticket" size={20} className="text-white" />
+              <span className="text-lg">🎯</span>
             </div>
-            <span className="font-black text-xl text-foreground tracking-tight">PromoLand</span>
+            <div>
+              <span className="font-black text-xl text-foreground tracking-tight">PromoLand</span>
+              <span className="text-xs text-primary font-medium ml-2">CS2 / CSGO</span>
+            </div>
           </div>
           <nav className="flex items-center gap-1">
             <button
@@ -355,15 +351,29 @@ export default function Index() {
             <div className="text-center mb-10 animate-fade-in">
               <div className="inline-flex items-center gap-2 bg-secondary text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-4">
                 <Icon name="Zap" size={14} />
-                {PROMOS.length} актуальных промокодов
+                {PROMOS.length} рабочих промокодов на сегодня
               </div>
               <h1 className="text-4xl font-black text-foreground mb-3 tracking-tight leading-tight">
-                Лучшие промокоды<br />
-                <span className="text-primary">с оценками покупателей</span>
+                Промокоды для кейс-сайтов<br />
+                <span className="text-primary">CS2 и CS:GO</span>
               </h1>
-              <p className="text-muted-foreground text-lg max-w-md mx-auto">
-                Реальные скидки, проверенные сообществом. Копируй — и экономь прямо сейчас.
+              <p className="text-muted-foreground text-lg max-w-lg mx-auto">
+                Бонусы, бесплатные кейсы и надбавки к балансу на лучших сайтах. Проверено игроками.
               </p>
+            </div>
+
+            {/* Stats */}
+            <div className="flex justify-center gap-6 mb-8 flex-wrap">
+              {[
+                { label: "Сайтов", value: "6+" },
+                { label: "Отзывов", value: "5 000+" },
+                { label: "Обновлено", value: "Сегодня" },
+              ].map((s) => (
+                <div key={s.label} className="text-center">
+                  <div className="text-2xl font-black text-primary">{s.value}</div>
+                  <div className="text-xs text-muted-foreground">{s.label}</div>
+                </div>
+              ))}
             </div>
 
             {/* Categories */}
@@ -375,7 +385,7 @@ export default function Index() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                     activeCategory === cat.id
                       ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                      : "bg-white text-muted-foreground border border-border hover:border-primary hover:text-primary"
+                      : "bg-card text-muted-foreground border border-border hover:border-primary hover:text-primary"
                   }`}
                 >
                   <Icon name={cat.icon} size={15} />
@@ -388,7 +398,6 @@ export default function Index() {
           {/* Promos Grid + Sidebar */}
           <section className="max-w-5xl mx-auto px-4 pb-16">
             <div className="flex gap-6 items-start">
-              {/* Main grid */}
               <div className="flex-1 min-w-0">
                 {filtered.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -402,8 +411,8 @@ export default function Index() {
                             </div>
                             <div>
                               <div className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Рекламное место</div>
-                              <div className="font-semibold text-foreground text-sm">Ваш баннер здесь · 728×90</div>
-                              <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами для размещения рекламы</div>
+                              <div className="font-semibold text-foreground text-sm">Разместить промокод вашего сайта · 728×90</div>
+                              <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами для размещения</div>
                             </div>
                           </div>
                         )}
@@ -420,28 +429,36 @@ export default function Index() {
 
               {/* Sidebar */}
               <aside className="hidden lg:flex flex-col gap-4 w-64 shrink-0 sticky top-24">
+                <div className="bg-card rounded-2xl border border-border p-4">
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <Icon name="TrendingUp" size={13} />
+                    Топ сайты
+                  </div>
+                  <div className="space-y-3">
+                    {PROMOS.slice(0, 4).map((p, i) => (
+                      <div key={p.id} className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-muted-foreground w-4">{i + 1}</span>
+                        <span className="text-lg">{p.logo}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium text-foreground truncate">{p.brand}</div>
+                          <div className="text-xs text-primary font-medium">{p.discount}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="rounded-2xl border-2 border-dashed border-border bg-card p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
                     <Icon name="Megaphone" size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Реклама</div>
-                    <div className="font-semibold text-foreground text-sm mb-1">Ваш баннер</div>
-                    <div className="text-xs text-muted-foreground">240×400 · Свяжитесь с нами</div>
+                    <div className="font-semibold text-foreground text-sm mb-1">Ваш сайт здесь</div>
+                    <div className="text-xs text-muted-foreground">240×300 · Свяжитесь с нами</div>
                   </div>
-                  <div className="w-full h-32 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
-                    240 × 400
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border-2 border-dashed border-border bg-card p-5 flex flex-col items-center text-center gap-3 cursor-pointer hover:border-primary transition-colors group">
-                  <div className="w-full h-20 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
-                    240 × 200
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Реклама</div>
-                    <div className="font-semibold text-foreground text-sm mb-1">Ваш баннер</div>
-                    <div className="text-xs text-muted-foreground">240×200 · Свяжитесь с нами</div>
+                  <div className="w-full h-24 rounded-xl bg-secondary/60 flex items-center justify-center text-muted-foreground text-xs">
+                    240 × 300
                   </div>
                 </div>
               </aside>
@@ -454,24 +471,24 @@ export default function Index() {
         <section className="max-w-2xl mx-auto px-4 pt-12 pb-16 animate-fade-in">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-black text-foreground mb-3 tracking-tight">Свяжитесь с нами</h2>
-            <p className="text-muted-foreground">Знаете крутой промокод? Нашли ошибку? Напишите нам!</p>
+            <p className="text-muted-foreground">Хотите разместить промокод своего сайта? Нашли нерабочий код? Пишите!</p>
           </div>
 
           {contactSent ? (
             <div className="bg-card border border-primary/30 rounded-2xl p-8 text-center animate-scale-in">
               <div className="text-5xl mb-4">✅</div>
               <h3 className="font-bold text-lg text-foreground mb-2">Сообщение отправлено!</h3>
-              <p className="text-muted-foreground text-sm">Мы ответим вам в течение 24 часов.</p>
+              <p className="text-muted-foreground text-sm">Ответим в течение 24 часов.</p>
             </div>
           ) : (
             <div className="bg-card rounded-2xl border border-border p-6 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">Ваше имя</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Ник или имя</label>
                   <input
                     value={contactForm.name}
                     onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                    placeholder="Иван Иванов"
+                    placeholder="pro_gamer"
                     className="w-full bg-secondary rounded-xl px-4 py-3 text-sm border border-transparent focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground"
                   />
                 </div>
@@ -481,7 +498,7 @@ export default function Index() {
                     type="email"
                     value={contactForm.email}
                     onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                    placeholder="ivan@mail.ru"
+                    placeholder="email@mail.ru"
                     className="w-full bg-secondary rounded-xl px-4 py-3 text-sm border border-transparent focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground"
                   />
                 </div>
@@ -491,7 +508,7 @@ export default function Index() {
                 <textarea
                   value={contactForm.message}
                   onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                  placeholder="Расскажите о промокоде или задайте вопрос..."
+                  placeholder="Хочу разместить промокод сайта / промокод не работает..."
                   rows={5}
                   className="w-full bg-secondary rounded-xl px-4 py-3 text-sm border border-transparent focus:border-primary focus:outline-none transition-colors resize-none placeholder:text-muted-foreground"
                 />
@@ -501,7 +518,7 @@ export default function Index() {
                 disabled={!contactForm.name || !contactForm.email || !contactForm.message}
                 className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-xl hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
               >
-                Отправить сообщение
+                Отправить
               </button>
             </div>
           )}
@@ -513,7 +530,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="text-xs text-muted-foreground mb-0.5">Email</div>
-                <div className="text-sm font-medium text-foreground">hello@promohub.ru</div>
+                <div className="text-sm font-medium text-foreground">hello@promoland.gg</div>
               </div>
             </div>
             <div className="bg-card rounded-2xl border border-border p-5 flex items-center gap-4">
@@ -522,7 +539,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="text-xs text-muted-foreground mb-0.5">Telegram</div>
-                <div className="text-sm font-medium text-foreground">@promohub_ru</div>
+                <div className="text-sm font-medium text-foreground">@promoland_cs</div>
               </div>
             </div>
           </div>
@@ -533,15 +550,12 @@ export default function Index() {
       {activeSection === "promos" && (
         <section className="max-w-5xl mx-auto px-4 pb-10">
           <div className="bg-card rounded-2xl border border-border p-6">
-            <h2 className="text-base font-bold text-foreground mb-2">Промокоды и скидки 2026 — PromoLand</h2>
+            <h2 className="text-base font-bold text-foreground mb-2">Промокоды для CS2 кейс-сайтов 2026</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              PromoLand — это сервис проверенных промокодов и купонов на скидки в популярных российских магазинах.
-              Здесь вы найдёте актуальные промокоды на еду и доставку, одежду и обувь, электронику, путешествия и авиабилеты, товары для красоты и спорта.
-              Каждый промокод оценивается реальными покупателями — вы всегда знаете, работает ли код прямо сейчас.
-              Копируйте промокод одним кликом и экономьте на каждой покупке.
+              PromoLand собирает актуальные промокоды для сайтов открытия кейсов CS2 и CS:GO. Бонусы при регистрации, бесплатные кейсы, надбавки к балансу и кэшбэк — всё проверено реальными игроками. Копируй промокод одним кликом и получай максимальную выгоду на DatDrop, Hellcase, Key-Drop, Farmskins и других популярных платформах.
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {["промокоды на еду","скидки на одежду","промокоды на электронику","купоны на авиабилеты","промокоды на красоту","скидки на спорт","бесплатные промокоды","акции магазинов 2026"].map((kw) => (
+              {["промокод датдроп","промокод хеллкейс","промокод кейдроп","бесплатные кейсы cs2","бонус на кейс сайт","промокод фармскинс","промокод скинсманки","cs2 кейс промокод 2026"].map((kw) => (
                 <span key={kw} className="text-xs bg-secondary text-muted-foreground px-3 py-1 rounded-full">{kw}</span>
               ))}
             </div>
@@ -557,8 +571,8 @@ export default function Index() {
           </div>
           <div>
             <div className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Рекламное место</div>
-            <div className="font-semibold text-foreground text-sm">Ваш баннер здесь · 970×90</div>
-            <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами для размещения рекламы</div>
+            <div className="font-semibold text-foreground text-sm">Разместите промокод вашего кейс-сайта · 970×90</div>
+            <div className="text-xs text-muted-foreground mt-0.5">Свяжитесь с нами через раздел Контакты</div>
           </div>
         </div>
       </div>
@@ -568,11 +582,12 @@ export default function Index() {
         <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
-              <Icon name="Ticket" size={14} className="text-white" />
+              <span className="text-sm">🎯</span>
             </div>
             <span className="text-sm font-black text-foreground">PromoLand</span>
+            <span className="text-xs text-muted-foreground">CS2 / CSGO</span>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 PromoLand. Все промокоды проверены сообществом.</p>
+          <p className="text-xs text-muted-foreground">© 2026 PromoLand. Промокоды проверены сообществом игроков.</p>
         </div>
       </footer>
     </div>
