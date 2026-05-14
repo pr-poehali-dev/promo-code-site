@@ -134,6 +134,7 @@ function StarRating({ value, onRate }: { value: number; onRate?: (v: number) => 
 
 function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
   const [copied, setCopied] = useState(false);
+  const [codeRevealed, setCodeRevealed] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [comments, setComments] = useState(promo.comments);
   const [newComment, setNewComment] = useState("");
@@ -143,6 +144,10 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
   const [ratingCount, setRatingCount] = useState(promo.ratingCount);
 
   const copyCode = () => {
+    if (!codeRevealed) {
+      setCodeRevealed(true);
+      return;
+    }
     navigator.clipboard.writeText(promo.code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -193,20 +198,30 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
 
         <div className="flex items-center gap-3 mb-4">
           <div
-            className="flex-1 bg-secondary rounded-xl px-4 py-3 promo-code font-semibold text-foreground text-sm tracking-widest cursor-pointer border-2 border-dashed border-border hover:border-primary transition-colors"
+            className="relative flex-1 bg-secondary rounded-xl px-4 py-3 promo-code font-semibold text-sm tracking-widest cursor-pointer border-2 border-dashed border-border hover:border-primary transition-colors overflow-hidden"
             onClick={copyCode}
           >
-            {promo.code}
+            <span className={`transition-all duration-300 ${codeRevealed ? "text-foreground" : "opacity-0 select-none"}`}>
+              {promo.code}
+            </span>
+            {!codeRevealed && (
+              <div className="absolute inset-0 flex items-center justify-center gap-2 text-primary font-semibold text-sm">
+                <Icon name="Eye" size={15} />
+                Показать код
+              </div>
+            )}
           </div>
           <button
             onClick={copyCode}
             className={`shrink-0 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
               copied
                 ? "bg-green-100 text-green-700"
-                : "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
+                : codeRevealed
+                ? "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
+                : "bg-secondary text-muted-foreground border border-border"
             }`}
           >
-            {copied ? "Скопировано!" : "Скопировать"}
+            {copied ? "Скопировано!" : codeRevealed ? "Скопировать" : "Получить"}
           </button>
         </div>
 
