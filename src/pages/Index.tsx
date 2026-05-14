@@ -317,11 +317,11 @@ export default function Index() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Icon name="Ticket" size={16} className="text-white" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <Icon name="Ticket" size={20} className="text-white" />
             </div>
-            <span className="font-bold text-lg text-foreground tracking-tight">PromoHub</span>
+            <span className="font-black text-xl text-foreground tracking-tight">PromoLand</span>
           </div>
           <nav className="flex items-center gap-1">
             <button
@@ -529,6 +529,26 @@ export default function Index() {
         </section>
       )}
 
+      {/* SEO Text Block */}
+      {activeSection === "promos" && (
+        <section className="max-w-5xl mx-auto px-4 pb-10">
+          <div className="bg-white rounded-2xl border border-border p-6">
+            <h2 className="text-base font-bold text-foreground mb-2">Промокоды и скидки 2026 — PromoLand</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              PromoLand — это сервис проверенных промокодов и купонов на скидки в популярных российских магазинах.
+              Здесь вы найдёте актуальные промокоды на еду и доставку, одежду и обувь, электронику, путешествия и авиабилеты, товары для красоты и спорта.
+              Каждый промокод оценивается реальными покупателями — вы всегда знаете, работает ли код прямо сейчас.
+              Копируйте промокод одним кликом и экономьте на каждой покупке.
+            </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {["промокоды на еду","скидки на одежду","промокоды на электронику","купоны на авиабилеты","промокоды на красоту","скидки на спорт","бесплатные промокоды","акции магазинов 2026"].map((kw) => (
+                <span key={kw} className="text-xs bg-secondary text-muted-foreground px-3 py-1 rounded-full">{kw}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Bottom Banner Ad */}
       <div className="max-w-5xl mx-auto px-4 pb-8">
         <div className="rounded-2xl border-2 border-dashed border-border bg-white flex items-center justify-center py-7 px-6 gap-4 cursor-pointer hover:border-primary transition-colors group">
@@ -547,12 +567,12 @@ export default function Index() {
       <footer className="border-t border-border bg-white">
         <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
-              <Icon name="Ticket" size={12} className="text-white" />
+            <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
+              <Icon name="Ticket" size={14} className="text-white" />
             </div>
-            <span className="text-sm font-semibold text-foreground">PromoHub</span>
+            <span className="text-sm font-black text-foreground">PromoLand</span>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 PromoHub. Все промокоды проверены сообществом.</p>
+          <p className="text-xs text-muted-foreground">© 2026 PromoLand. Все промокоды проверены сообществом.</p>
         </div>
       </footer>
     </div>
