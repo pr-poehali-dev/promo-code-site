@@ -144,10 +144,7 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
   const [ratingCount, setRatingCount] = useState(promo.ratingCount);
 
   const copyCode = () => {
-    if (!codeRevealed) {
-      setCodeRevealed(true);
-      return;
-    }
+    setCodeRevealed(true);
     navigator.clipboard.writeText(promo.code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -216,12 +213,10 @@ function PromoCard({ promo }: { promo: typeof PROMOS[0] }) {
             className={`shrink-0 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
               copied
                 ? "bg-green-100 text-green-700"
-                : codeRevealed
-                ? "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
-                : "bg-secondary text-muted-foreground border border-border"
+                    : "bg-primary text-primary-foreground hover:opacity-90 active:scale-95"
             }`}
           >
-            {copied ? "Скопировано!" : codeRevealed ? "Скопировать" : "Получить"}
+            {copied ? "Скопировано!" : "Скопировать"}
           </button>
         </div>
 
